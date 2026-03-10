@@ -1,0 +1,426 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f8;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #333;
+}
+
+.auth-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.auth-tab {
+  flex: 1;
+  background: #eef2f7;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.auth-tab.active {
+  background: #1f2937;
+  color: white;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #333;
+  width: 100%;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-status {
+  background: #10b981;
+  color: white;
+}
+
+.logout {
+  background: #f97316;
+  color: white;
+  width: 25%;
+  margin-bottom: 16px;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-form {
+  margin-bottom: 4px;
+}
+
+.filters-panel {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 16px;
+  margin-bottom: 18px;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.task {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  transition: 0.2s;
+}
+
+.task:hover {
+  transform: translateY(-3px);
+}
+
+.task-header strong {
+  font-size: 16px;
+}
+
+.task small {
+  color: #6b7280;
+  display: block;
+}
+
+.task-buttons button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.task.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.priority {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.priority.Alta {
+  color: #dc2626;
+}
+
+.priority.Média {
+  color: #ca8a04;
+}
+
+.priority.Baixa {
+  color: #16a34a;
+}
+
+.task-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.task-meta {
+  margin-top: 6px;
+}
+
+.task-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-button {
+  width: auto;
+}
+
+.message-error {
+  color: #dc2626;
+  text-align: center;
+}
+
+.message-info {
+  color: #475569;
+  text-align: center;
+  margin-top: 18px;
+}
+
+.message-success {
+  color: #16a34a;
+  text-align: center;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.header h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.content-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.content-tab {
+  flex: 1;
+  background: #eef2f7;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.content-tab.active {
+  background: #4f46e5;
+  color: white;
+}
+
+.logout {
+  background: transparent;
+  color: #f97316;
+  border: 2px solid #f97316;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.logout:hover {
+  background: #f97316;
+  color: white;
+}
+
+.pomodoro {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+}
+
+.pomodoro h3 {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.pomodoro-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pomodoro-mode {
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.timer {
+  font-size: 42px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.pomodoro-settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.pomodoro-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.pomodoro-field span {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.pomodoro-field input {
+  margin: 0;
+}
+
+.pomodoro-toggle {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+.pomodoro-toggle input {
+  width: auto;
+  margin: 0;
+}
+
+.pomodoro-buttons button {
+  background: white;
+  color: #4f46e5;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pomodoro-buttons button:hover {
+  transform: scale(1.05);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.stat-card.pending {
+  background: #fff7ed;
+  border-color: #fdba74;
+}
+
+.stat-label {
+  display: block;
+  color: #6b7280;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  color: #111827;
+  font-size: 28px;
+}
+
+.empty-state {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
+  padding: 24px 18px;
+  text-align: center;
+  color: #475569;
+}
+
+.empty-state h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+@media (max-width: 640px) {
+  .container {
+    max-width: 100%;
+    border-radius: 0;
+    min-height: 100vh;
+  }
+
+  .filter-grid,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pomodoro-settings {
+    grid-template-columns: 1fr;
+  }
+
+  .task-buttons {
+    flex-direction: column;
+  }
+}
