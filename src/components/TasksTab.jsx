@@ -28,6 +28,14 @@ export default function TasksTab({
   deleteTask,
   formatTaskDate,
 }) {
+  function getDisplayTitle(task) {
+    const rawTitle = task?.title ?? task?.titulo ?? task?.name ?? task?.text ?? "";
+    const normalizedTitle =
+      typeof rawTitle === "string" ? rawTitle.trim() : "";
+
+    return normalizedTitle || "Sem titulo";
+  }
+
   return (
     <>
       <div className="task-form">
@@ -135,7 +143,7 @@ export default function TasksTab({
               ) : (
                 <>
                   <div className="task-header">
-                    <strong>{task.title}</strong>
+                    <strong>{getDisplayTitle(task)}</strong>
                     <span className={`priority ${task.priority}`}>
                       {task.priority}
                     </span>
@@ -182,4 +190,3 @@ export default function TasksTab({
     </>
   );
 }
-

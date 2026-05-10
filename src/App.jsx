@@ -56,6 +56,15 @@ function getTimestampValue(timestamp) {
   return date ? date.getTime() : 0;
 }
 
+function getTaskTitle(task) {
+  if (!task || typeof task !== "object") {
+    return "";
+  }
+
+  const rawTitle = task.title ?? task.titulo ?? task.name ?? task.text ?? "";
+  return typeof rawTitle === "string" ? rawTitle.trim() : "";
+}
+
 function formatTaskDate(timestamp) {
   const date = getTaskDate(timestamp);
 
@@ -159,6 +168,7 @@ function App() {
         const list = snapshot.docs.map((docSnap) => ({
           id: docSnap.id,
           ...docSnap.data(),
+          title: getTaskTitle(docSnap.data()),
         }));
         setTasks(list);
         setIsTasksLoading(false);
@@ -265,7 +275,7 @@ function App() {
 
   function startEditingTask(task) {
     setEditingTaskId(task.id);
-    setEditingTitle(task.title);
+    setEditingTitle(getTaskTitle(task));
     setEditingPriority(task.priority);
     setTaskErrorMsg("");
   }
@@ -412,8 +422,9 @@ function App() {
   const normalizedSearchTerm = searchTerm.trim().toLowerCase();
 
   const filteredTasks = visibleTasks.filter((task) => {
+    const taskTitle = getTaskTitle(task).toLowerCase();
     const matchesSearch = normalizedSearchTerm
-      ? task.title.toLowerCase().includes(normalizedSearchTerm)
+      ? taskTitle.includes(normalizedSearchTerm)
       : true;
     const matchesStatus =
       statusFilter === "todas" ? true : task.status === statusFilter;
